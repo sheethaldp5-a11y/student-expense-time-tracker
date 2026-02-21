@@ -66,3 +66,5 @@ elif menu == "Dashboard":
         fig2, ax2 = plt.subplots()
         ax2.pie(time["hours"], labels=time["activity"], autopct="%1.1f%%")
         st.pyplot(fig2)
+
+        

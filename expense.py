@@ -1,12 +1,14 @@
 import sqlite3
-from datetime import date
 
-def add_expense(item, amount):
+def add_expense(user_id,item,category,amount,date,time):
+
     conn = sqlite3.connect("student.db")
     c = conn.cursor()
+
     c.execute(
-        "INSERT INTO expenses(item,amount,date) VALUES(?,?,?)",
-        (item, amount, str(date.today()))
+    "INSERT INTO expenses(user_id,item,category,amount,date,time) VALUES(?,?,?,?,?,?)",
+    (user_id,item,category,amount,date,time)
     )
+
     conn.commit()
     conn.close()

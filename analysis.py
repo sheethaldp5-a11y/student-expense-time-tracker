@@ -1,23 +1,32 @@
-import pandas as pd
 import sqlite3
+import pandas as pd
 
-def load_data():
+def load_data(user_id):
+
     conn = sqlite3.connect("student.db")
-    expenses = pd.read_sql("SELECT * FROM expenses", conn)
-    time = pd.read_sql("SELECT * FROM time_logs", conn)
+
+    exp = pd.read_sql_query(
+    "SELECT * FROM expenses WHERE user_id=?",
+    conn,
+    params=(user_id,)
+    )
+
+    time = pd.read_sql_query(
+    "SELECT * FROM time_logs WHERE user_id=?",
+    conn,
+    params=(user_id,)
+    )
+
     conn.close()
-    return expenses, time
 
-def productivity_score(expenses, time):
-    total_spend = expenses["amount"].sum() if not expenses.empty else 0
+    return exp,time
 
-    waste_time = time[time["activity"].isin(
-        ["social media","scrolling","gaming","youtube"]
-    )]["hours"].sum()
 
-    study_time = time[time["activity"].isin(
-        ["study","class","learning"]
-    )]["hours"].sum()
+def productivity_score(exp,time):
 
-    score = study_time*10 - waste_time*5 - total_spend*0.05
+    study = time["hours"].sum() if not time.empty else 0
+    expense = exp["amount"].sum() if not exp.empty else 0
+
+    score = study*10 - expense*0.1
+
     return round(score,2)

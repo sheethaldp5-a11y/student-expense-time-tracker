@@ -1,44 +1,37 @@
 # Student Tracker
 
-A comprehensive web application built with Streamlit for students to track their expenses, time logs, and productivity metrics. Features a modern dark theme with beautiful gradients and interactive dashboards.
+A comprehensive student productivity and expense tracking application built with Streamlit, featuring a modern dark UI and data visualization capabilities.
 
 ## Features
 
 - **User Authentication**: Secure registration and login system
-- **Expense Tracking**: Log expenses with categories, amounts, dates, and times
-- **Time Logging**: Track time spent on various activities
-- **Analytics Dashboard**: View productivity scores and expense insights with interactive charts
-- **Modern UI**: Dark theme with gradient backgrounds and smooth animations
-- **SQLite Database**: Local data storage for user data and logs
+- **Expense Tracking**: Log and categorize expenses with detailed records
+- **Time Logging**: Track study hours and activities
+- **Productivity Analysis**: Calculate productivity scores based on study time and expenses
+- **Data Visualization**: Interactive charts and graphs using Plotly
+- **Modern UI**: Beautiful dark theme with custom CSS styling
 
 ## Installation
 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd student-tracker
+cd student_tracker
 ```
 
 2. Create a virtual environment:
 ```bash
 python -m venv .venv
-.venv\Scripts\activate  # On Windows
-# or
-source .venv/bin/activate  # On macOS/Linux
+# On Windows:
+.venv\Scripts\activate
+# On macOS/Linux:
+source .venv/bin/activate
 ```
 
 3. Install dependencies:
 ```bash
-pip install streamlit pandas plotly
+pip install streamlit plotly pandas
 ```
-
-## Database Setup
-
-The application uses SQLite database (`student.db`) which is created automatically when you run the app for the first time. The database includes the following tables:
-
-- `users`: User authentication data
-- `expenses`: Expense tracking records
-- `time_logs`: Time logging records
 
 ## Usage
 
@@ -47,35 +40,49 @@ The application uses SQLite database (`student.db`) which is created automatical
 streamlit run app.py
 ```
 
-2. Open your browser to `http://localhost:8501`
+2. Open your browser to the provided URL (usually http://localhost:8501)
 
 3. Register a new account or login with existing credentials
 
-4. Navigate through the different sections:
-   - **Dashboard**: View overview and productivity metrics
-   - **Add Expense**: Log new expenses
-   - **Log Time**: Record time spent on activities
-   - **Expense Insights**: Analyze spending patterns
+4. Start tracking your expenses and study time through the intuitive interface
+
+## Database
+
+The application uses SQLite database (`student.db`) with the following tables:
+- `users`: User authentication data
+- `expenses`: Expense records with categories
+- `time_logs`: Study time and activity logs
+
+The database is automatically created when you first run the application.
+
+## Features Overview
+
+### Dashboard
+- View key metrics and KPIs
+- Productivity score calculation
+- Recent activities overview
+
+### Expense Management
+- Add new expenses with categories
+- View expense history
+- Category-wise expense analysis
+
+### Time Tracking
+- Log study hours and activities
+- Track productivity over time
+- Activity-based time analysis
+
+### Analysis
+- Interactive data visualizations
+- Productivity trends
+- Expense vs. study time correlations
 
 ## Dependencies
 
-- streamlit
-- pandas
-- plotly
-
-## Project Structure
-
-```
-student_tracker/
-├── app.py          # Main Streamlit application
-├── auth.py         # Authentication functions
-├── database.py     # Database setup and schema
-├── expense.py      # Expense management functions
-├── time_log.py     # Time logging functions
-├── analysis.py     # Data analysis and dashboard functions
-├── student.db      # SQLite database (created automatically)
-└── README.md       # This file
-```
+- Streamlit
+- Plotly Express
+- Pandas
+- SQLite3 (built-in with Python)
 
 ## Contributing
 
@@ -87,4 +94,4 @@ student_tracker/
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source. Please check the license file for details.
